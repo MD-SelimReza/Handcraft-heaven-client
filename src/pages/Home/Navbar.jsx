@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import logo from "../../../public/logo-removebg-preview.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -46,10 +47,11 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar max-w-6xl bg-black text-white fixed top-0 z-10">
+    <div className="navbar max-w-6xl bg-[#111827] text-white fixed top-0 z-10">
       <div className="navbar-start">
         <Link className="btn btn-ghost text-xl text-[#FC8902]">
           Art&CraftGallery
+          <img src={logo} className="lg:size-10 size-5" alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
