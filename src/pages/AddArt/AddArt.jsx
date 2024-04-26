@@ -1,4 +1,54 @@
+import Swal from "sweetalert2";
+
 const AddArt = () => {
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const item_name = form.item_name.value;
+    const subcategory_name = form.subcategory_name.value;
+    const description = form.description.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const customization = form.customization.value;
+    const processing_time = form.processing_time.value;
+    const stockStatus = form.stock_status.value;
+    const image = form.image_url.value;
+
+    const arts = {
+      item_name,
+      subcategory_name,
+      description,
+      price,
+      rating,
+      customization,
+      processing_time,
+      stockStatus,
+      image,
+    };
+
+    form.reset();
+
+    fetch("http://localhost:5000/allArts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(arts),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "New arts added successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
+  };
+
   return (
     <div>
       <div className="lg:px-20 px-5 py-10">
@@ -8,7 +58,7 @@ const AddArt = () => {
               Add Your Favorite Product
             </h2>
           </div>
-          <form className="space-y-5">
+          <form onSubmit={handleAddProduct} className="space-y-5">
             <div className="lg:flex gap-5">
               <div className="form-control lg:w-1/2">
                 <label className="label">
@@ -19,7 +69,7 @@ const AddArt = () => {
                 <input
                   type="text"
                   placeholder="Enter item name"
-                  name="item-name"
+                  name="item_name"
                   className="input input-bordered"
                   required
                 />
@@ -33,7 +83,7 @@ const AddArt = () => {
                 <input
                   type="text"
                   placeholder="Enter subcategory name"
-                  name="subcategory-name"
+                  name="subcategory_name"
                   className="input input-bordered"
                   required
                 />
@@ -115,11 +165,8 @@ const AddArt = () => {
                 </label>
                 <input
                   type="number"
-                  name="rating"
+                  name="processing_time"
                   placeholder="Enter processing time"
-                  min="0"
-                  max="5"
-                  step="0"
                   className="input input-bordered"
                   required
                 />
@@ -132,7 +179,7 @@ const AddArt = () => {
                 </label>
                 <select
                   className="input input-bordered"
-                  id="customization"
+                  id="stock_status"
                   name="customization"
                   required
                 >
@@ -151,7 +198,7 @@ const AddArt = () => {
               <input
                 type="text"
                 placeholder="Enter image URL"
-                name="image-url"
+                name="image_url"
                 className="input input-bordered"
                 required
               />
