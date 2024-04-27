@@ -4,9 +4,11 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
+import Spinner from "../../Spinner/Spinner";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, loading } = useContext(AuthContext);
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -20,20 +22,21 @@ const Login = () => {
     const { email, password } = data;
 
     if (!/^(?=.*[a-z])(?=.*[A-Z])[A-Za-z]{6,}$/.test(password)) {
-      alert(
+      toast.error(
         "password must be have at least 6 characters, a capital & a small letter"
       );
       return;
     }
 
     signIn(email, password).then(() => {
-      alert("user successfully sign in");
+      toast.success("user successfully sign in");
       navigate(location?.state ? location.state : "/");
     });
   };
 
   return (
     <div className="hero min-h-screen bg-base-200">
+      {loading && <Spinner />}
       <div className="hero-content">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body w-96">

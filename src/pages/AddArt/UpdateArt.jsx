@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 const UpdateArt = () => {
   const getArt = useLoaderData();
   const {
+    _id,
     item_name,
     subcategory_name,
     description,
@@ -57,7 +58,7 @@ const UpdateArt = () => {
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Arts updated successfully",
+            text: "Product updated successfully",
             icon: "success",
             confirmButtonText: "OK",
           });
@@ -70,9 +71,7 @@ const UpdateArt = () => {
       <div className="lg:px-20 px-5 py-10">
         <div className="bg-[#F4F3F0] px-5 lg:px-20 py-10 space-y-5">
           <div className="lg:px-20 text-center">
-            <h2 className="text-3xl font-bold mb-5">
-              Add Your Favorite Product
-            </h2>
+            <h2 className="text-3xl font-bold mb-5">Update Your Product</h2>
           </div>
           <form onSubmit={handleUpdateProduct} className="space-y-5">
             <div className="lg:flex gap-5">
@@ -120,7 +119,7 @@ const UpdateArt = () => {
                   defaultValue={description}
                   rows="4"
                   cols="40"
-                  className="input input-bordered"
+                  className="input pt-3 input-bordered"
                   required
                 ></textarea>
               </div>

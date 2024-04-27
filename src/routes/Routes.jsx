@@ -8,11 +8,13 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import UpdateArt from "../pages/AddArt/UpdateArt";
+import ErrorState from "../pages/ErrorState/ErrorState";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorState />,
     children: [
       {
         path: "/",

@@ -100,7 +100,7 @@ const Footer = () => {
         </form>
       </div>
       <hr className="mx-10" />
-      <p className="text-center py-8">
+      <p className="text-center text-white py-8">
         Copyrights &copy; 2024{" "}
         <span className="text-[#FC8902] opacity-100">Art&CraftGallery</span>.
         All Rights Reserved.

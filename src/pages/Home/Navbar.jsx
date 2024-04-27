@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import logo from "../../../public/logo-removebg-preview.png";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    logOut().then(() => alert("user successfully logout"));
+    logOut().then(() => toast.success("user successfully logout"));
   };
 
   const navLinks = (
@@ -15,7 +16,9 @@ const Navbar = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive ? "text-[#FC8902]" : "hover:text-[#FC8902] opacity-75"
+          isActive
+            ? "text-[#FC8902] border-b-2 border-[#FC8902]"
+            : "hover:text-[#FC8902] opacity-75"
         }
       >
         Home
@@ -23,7 +26,9 @@ const Navbar = () => {
       <NavLink
         to="/show-art"
         className={({ isActive }) =>
-          isActive ? "text-[#FC8902]" : "hover:text-[#FC8902] opacity-75"
+          isActive
+            ? "text-[#FC8902] border-b-2 border-[#FC8902]"
+            : "hover:text-[#FC8902] opacity-75"
         }
       >
         Art & Craft Gallery
@@ -31,7 +36,9 @@ const Navbar = () => {
       <NavLink
         to="/add-art"
         className={({ isActive }) =>
-          isActive ? "text-[#FC8902]" : "hover:text-[#FC8902] opacity-75"
+          isActive
+            ? "text-[#FC8902] border-b-2 border-[#FC8902]"
+            : "hover:text-[#FC8902] opacity-75"
         }
       >
         Add Art
@@ -39,7 +46,9 @@ const Navbar = () => {
       <NavLink
         to="/art-list"
         className={({ isActive }) =>
-          isActive ? "text-[#FC8902]" : "hover:text-[#FC8902] opacity-75"
+          isActive
+            ? "text-[#FC8902] border-b-2 border-[#FC8902]"
+            : "hover:text-[#FC8902] opacity-75"
         }
       >
         My Art & Craft List

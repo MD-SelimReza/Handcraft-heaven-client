@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { createUser, profileUpdate } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const Register = () => {
     const { email, password, image, fullName } = data;
 
     if (!/^(?=.*[a-z])(?=.*[A-Z])[A-Za-z]{6,}$/.test(password)) {
-      alert(
+      toast.error(
         "password must be have at least 6 characters, a capital & a small letter"
       );
       return;
@@ -27,7 +28,7 @@ const Register = () => {
 
     createUser(email, password).then(() => {
       profileUpdate(fullName, image).then(() => {
-        alert("user successfully register");
+        toast.success("user successfully register");
         navigate(from?.state ? from.state : "/");
         location.reload();
       });

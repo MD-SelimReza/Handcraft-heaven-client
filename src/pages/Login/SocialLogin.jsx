@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
   const { googleSignIn, githubLogIn } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const SocialLogin = () => {
 
   const handleSocialLogIn = (socialProvider) => {
     socialProvider().then(() => {
-      alert("user successfully login");
+      toast.success("user successfully login");
       navigate(location?.state ? location.state : "/");
     });
   };

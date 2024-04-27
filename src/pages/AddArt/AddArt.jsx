@@ -101,7 +101,7 @@ const AddArt = () => {
                   placeholder="Enter short description"
                   rows="4"
                   cols="40"
-                  className="input input-bordered"
+                  className="input pt-3 input-bordered"
                   required
                 ></textarea>
               </div>
