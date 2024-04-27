@@ -7,6 +7,7 @@ import ArtList from "../pages/ArtList/ArtList";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import UpdateArt from "../pages/AddArt/UpdateArt";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/show-art",
         element: <ArtGallery />,
+        loader: () => fetch(`http://localhost:5000/allArts`),
       },
       {
         path: "/add-art",
@@ -28,6 +30,16 @@ const router = createBrowserRouter([
             <AddArt />
           </ProtectedRoutes>
         ),
+      },
+      {
+        path: "/update-art/:id",
+        element: (
+          <ProtectedRoutes>
+            <UpdateArt />
+          </ProtectedRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allArts/${params.id}`),
       },
       {
         path: "/art-list",
