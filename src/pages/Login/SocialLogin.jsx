@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const SocialLogin = () => {
-  const { googleSignIn, githubLogIn } = useContext(AuthContext);
+  const { googleSignIn, githubSignIn } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const SocialLogin = () => {
         <span className="text-white">Login with Google</span>
       </button>
       <button
-        onClick={() => handleSocialLogIn(githubLogIn)}
+        onClick={() => handleSocialLogIn(githubSignIn)}
         className="btn btn-primary"
       >
         <FaGithub />

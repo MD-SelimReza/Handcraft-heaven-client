@@ -49,7 +49,7 @@ const ArtGallery = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>Serial</th>
               <th>Email</th>
               <th>Created At</th>
               <th>Last Logged In</th>
@@ -58,18 +58,28 @@ const ArtGallery = () => {
             </tr>
           </thead>
           <tbody>
-            {categories.map((category) => (
+            {categories.map((category, idx) => (
               <tr key={category._id} className="hover">
-                <th>2</th>
+                <th>{idx + 1}.</th>
                 <td>{category.item_name}</td>
                 <td>{category.subcategory_name}</td>
-                <td>{category.price}</td>
-                <td onClick={() => handleDelete(category._id)} className="btn">
-                  X
+                <td className="w-64 h-36">
+                  {" "}
+                  <img src={category.image} alt="" className="w-64 h-36" />
                 </td>
-                <Link to={`/update-art/${category._id}`} className="btn">
-                  Update Now
-                </Link>
+                <td>
+                  <span
+                    onClick={() => handleDelete(category._id)}
+                    className="btn"
+                  >
+                    X
+                  </span>
+                </td>
+                <td>
+                  <Link to={`/update-art/${category._id}`} className="btn">
+                    Update Now
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>

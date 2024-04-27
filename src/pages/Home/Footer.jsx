@@ -92,9 +92,7 @@ const Footer = () => {
                 placeholder="Email Address"
                 className="input input-bordered"
               />
-              <button className="btn btn-primary bg-[#FC8902] border-none">
-                Go
-              </button>
+              <button className="btn btn-primary border-none">Go</button>
             </div>
           </fieldset>
         </form>

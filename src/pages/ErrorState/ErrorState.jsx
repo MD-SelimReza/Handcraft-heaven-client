@@ -1,23 +1,24 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 import ErrorImage from "../../../public/404.gif";
 
 const ErrorState = () => {
   const navigate = useNavigate();
+  const err = useRouteError();
   return (
     <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">
-      <div className="flex flex-col items-center max-w-sm mx-auto text-center">
-        <p className="p-3 text-sm font-medium text-primary rounded-lg bg-secondary bg-opacity-30 ">
+      <div className="flex flex-col border-secondary rounded-lg border-8 border-opacity-30 p-5 items-center max-w-sm mx-auto text-center">
+        <p className="p-3 text-sm font-medium text-primary ">
           <img src={ErrorImage} alt="" />
         </p>
-        <h1 className="mt-3 text-2xl font-semibold  md:text-3xl">
-          Something Went Wrong!
+        <h1 className="mt-3 text-xl font-semibold  md:text-2xl">
+          <span className="text-red-600">{err?.data}</span>
         </h1>
         <p className="mt-4 text-base-500 ">Here are some helpful links:</p>
 
         <div className="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
           <button
             onClick={() => navigate(-1 || "/")}
-            className="flex bg-[#FC8902] items-center justify-center w-1/2 px-5 py-1 text-sm text-white hover:text-black transition-colors duration-200 border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100 "
+            className="flex text-black items-center justify-center w-1/2 px-5 py-1 text-sm hover:text-black transition-colors duration-200 border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +38,7 @@ const ErrorState = () => {
             <span>Go back</span>
           </button>
 
-          <button onClick={() => navigate("/")} className="text-[#FC8902]">
+          <button onClick={() => navigate("/")} className="">
             Take Me Home
           </button>
         </div>

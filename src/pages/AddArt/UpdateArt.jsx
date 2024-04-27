@@ -201,8 +201,7 @@ const UpdateArt = () => {
                 </label>
                 <select
                   className="input input-bordered"
-                  id="stock_status"
-                  name="customization"
+                  name="stock_status"
                   defaultValue={stockStatus}
                   required
                 >
