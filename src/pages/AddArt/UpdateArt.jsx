@@ -43,8 +43,6 @@ const UpdateArt = () => {
       image,
     };
 
-    form.reset();
-
     fetch(`http://localhost:5000/allArts/${_id}`, {
       method: "PUT",
       headers: {
@@ -170,7 +168,7 @@ const UpdateArt = () => {
                   required
                 >
                   <option value="" disabled selected>
-                    Yes/No
+                    Select
                   </option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>

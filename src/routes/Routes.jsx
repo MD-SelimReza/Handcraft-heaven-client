@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import UpdateArt from "../pages/AddArt/UpdateArt";
 import ErrorState from "../pages/ErrorState/ErrorState";
+import CraftDetails from "../pages/CraftDetails/CraftDetails";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +20,20 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch(`http://localhost:5000/allArts`),
       },
       {
         path: "/show-art",
         element: <ArtGallery />,
+        loader: () => fetch(`http://localhost:5000/allArts`),
+      },
+      {
+        path: "/craftDetails/:id",
+        element: (
+          <ProtectedRoutes>
+            <CraftDetails />
+          </ProtectedRoutes>
+        ),
         loader: () => fetch(`http://localhost:5000/allArts`),
       },
       {
