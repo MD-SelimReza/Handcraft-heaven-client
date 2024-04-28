@@ -180,7 +180,7 @@ const AddArt = () => {
                 <select
                   className="input input-bordered"
                   id="stock_status"
-                  name="customization"
+                  name="stock_status"
                   required
                 >
                   <option value="" disabled selected>
