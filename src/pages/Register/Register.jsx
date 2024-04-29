@@ -45,6 +45,9 @@ const Register = () => {
           >
             <h2 className="text-3xl font-bold mb-5">Create an account</h2>
             <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name :</span>
+              </label>
               <input
                 type="text"
                 placeholder="Full name"
@@ -56,6 +59,9 @@ const Register = () => {
               )}
             </div>
             <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email :</span>
+              </label>
               <input
                 type="text"
                 placeholder="email"
@@ -67,6 +73,9 @@ const Register = () => {
               )}
             </div>
             <div className="form-control">
+              <label className="label">
+                <span className="label-text">Image URL :</span>
+              </label>
               <input
                 type="text"
                 placeholder="image url"
@@ -74,28 +83,33 @@ const Register = () => {
                 {...register("image")}
               />
             </div>
-            <div className="form-control relative justify-center items-end">
-              <p>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  className="input input-bordered w-80"
-                  {...register("password", { required: true })}
-                />
-                {errors.password && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-              </p>
-              <p
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4"
-              >
-                {showPassword ? (
-                  <FaEye className="size-5" />
-                ) : (
-                  <FaEyeSlash className="size-5" />
-                )}
-              </p>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password :</span>
+              </label>
+              <div className="relative">
+                <p>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    className="input input-bordered w-80"
+                    {...register("password", { required: true })}
+                  />
+                  {errors.password && (
+                    <span className="text-red-500">This field is required</span>
+                  )}
+                </p>
+                <p
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 bottom-4"
+                >
+                  {showPassword ? (
+                    <FaEye className="size-5" />
+                  ) : (
+                    <FaEyeSlash className="size-5" />
+                  )}
+                </p>
+              </div>
             </div>
             <div className="form-control">
               <label>

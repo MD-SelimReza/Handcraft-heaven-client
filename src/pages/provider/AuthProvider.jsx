@@ -1,12 +1,12 @@
 import {
   GoogleAuthProvider,
-  FacebookAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import App from "../../firebase/firebase.config";
@@ -35,7 +35,7 @@ const AuthProviders = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const githubProvider = new FacebookAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const githubSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, githubProvider);

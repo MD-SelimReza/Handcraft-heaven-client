@@ -20,21 +20,21 @@ const SocialLogin = () => {
   return (
     <>
       <button className="btn btn-primary">Login</button>
-      <p className="text-center my-3">or</p>
-      <button
-        onClick={() => handleSocialLogIn(googleSignIn)}
-        className="btn btn-outline text-[#FC8902] mb-3"
-      >
-        <FaGoogle className=" text-[#FC8902]" />
-        <span className="text-white">Login with Google</span>
-      </button>
-      <button
-        onClick={() => handleSocialLogIn(githubSignIn)}
-        className="btn btn-primary"
-      >
-        <FaGithub />
-        Login with Github
-      </button>
+      <p className="text-center my-3">or login with</p>
+      <div className="flex justify-center gap-10">
+        <button
+          onClick={() => handleSocialLogIn(googleSignIn)}
+          className="btn border-2 border-[#FC8902]"
+        >
+          <FaGoogle className="text-[#34A853] size-5" />
+        </button>
+        <button
+          onClick={() => handleSocialLogIn(githubSignIn)}
+          className="btn border-2 border-[#FC8902]"
+        >
+          <FaGithub className="text-[#34A853] size-5" />
+        </button>
+      </div>
     </>
   );
 };

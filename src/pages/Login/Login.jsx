@@ -59,7 +59,7 @@ const Login = () => {
               <div className="form-control relative justify-end items-end">
                 <p>
                   <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="label-text">Password</span>
                   </label>
                   <input
                     type={showPassword ? "text" : "password"}
