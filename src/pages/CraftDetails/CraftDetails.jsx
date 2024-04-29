@@ -23,7 +23,11 @@ const CraftDetails = () => {
     <div className="flex gap-5 lg:flex-row flex-col text-black bg-white px-5 py-20">
       <div className="rounded-md w-full lg:w-3/4 bg-gray-200">
         <div className="relative">
-          <img src={image} alt="" className="w-full rounded-t-md" />
+          <img
+            src={image}
+            alt=""
+            className="w-full h-[500px] rounded-t-md border border-[#FC8902] shadow-lg"
+          />
           <span className="absolute top-5 right-5 text-white bg-[#FC8902] px-1 rounded-sm">
             {stockStatus}
           </span>

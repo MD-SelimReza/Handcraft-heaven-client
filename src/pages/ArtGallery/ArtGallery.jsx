@@ -47,12 +47,13 @@ const ArtGallery = () => {
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="text-lg font-bold text-[#FC8902]">
             <tr>
-              <th>Serial</th>
-              <th>Email</th>
-              <th>Created At</th>
-              <th>Last Logged In</th>
+              <th></th>
+              <th>Item Name</th>
+              <th>Subcategory Name</th>
+              <th>Image</th>
+              <th></th>
               <th>Delete</th>
               <th>Update</th>
             </tr>
@@ -66,6 +67,14 @@ const ArtGallery = () => {
                 <td className="w-64 h-36">
                   {" "}
                   <img src={category.image} alt="" className="w-64 h-36" />
+                </td>
+                <td>
+                  <Link
+                    to={`/craftDetails/${category._id}`}
+                    className="btn bg-[#FC8902] text-white"
+                  >
+                    View Details
+                  </Link>
                 </td>
                 <td>
                   <span

@@ -4,9 +4,8 @@ import { Link, useLoaderData } from "react-router-dom";
 const Cards = () => {
   const loadedCategories = useLoaderData();
   const [categories, setCategories] = useState(loadedCategories);
-  console.log(categories);
   return (
-    <div className="lg:px-20 px-5 lg:my-24 md:my-20 my-10">
+    <div className="lg:px-16 px-5 lg:my-20 md:my-16 my-10">
       <h2 className="lg:text-3xl text-2xl mb-10 lg:mb-16 text-center font-bold uppercase text-[#FC8902]">
         Most popular products
       </h2>
@@ -35,6 +34,14 @@ const Cards = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="text-center">
+        <Link
+          to="/show-art"
+          className="btn px-10 mt-16 bg-[#FC8902] text-white"
+        >
+          See more
+        </Link>
       </div>
     </div>
   );
