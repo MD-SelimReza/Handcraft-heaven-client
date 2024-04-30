@@ -3,6 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FcRating } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
 
 const ArtList = () => {
   const { user } = useContext(AuthContext) || {};
@@ -17,10 +18,21 @@ const ArtList = () => {
       });
   }, [user]);
 
-  console.log(crafts);
+  const handleFilter = (findText) => {
+    fetch(
+      `https://art-and-craft-store-server-peach.vercel.app/allCrafts/${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filterArts = crafts.filter(
+          (craft) => craft.customization === findText
+        );
+        setCrafts(filterArts);
+      });
+  };
 
   const handleDelete = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -39,7 +51,6 @@ const ArtList = () => {
         )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deleteCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -72,10 +83,10 @@ const ArtList = () => {
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
+            <li onClick={() => handleFilter("yes")}>
               <a>Yes</a>
             </li>
-            <li>
+            <li onClick={() => handleFilter("no")}>
               <a>No</a>
             </li>
           </ul>
@@ -88,7 +99,14 @@ const ArtList = () => {
             className="flex lg:flex-row flex-col gap-5 p-5 lg:items-center border shadow-lg"
           >
             <div>
-              <img src={craft.image} alt="" className="lg:w-64 w-full h-44" />
+              <img
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={craft.item_name}
+                src={craft.image}
+                alt=""
+                className="lg:w-64 w-full h-44"
+              />
+              <Tooltip id="my-tooltip" />
             </div>
             <div className="flex flex-col gap-2">
               <h2 className="text-2xl font-bold">{craft.item_name}</h2>
@@ -122,10 +140,10 @@ const ArtList = () => {
                   Delete
                 </button>
                 <Link
-                  to={`/craftDetails/${craft._id}`}
+                  to={`/update-art/${craft._id}`}
                   className="btn bg-[#FC8902] text-white"
                 >
-                  View Details
+                  Update Now
                 </Link>
               </div>
             </div>

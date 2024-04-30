@@ -16,13 +16,10 @@ const Home = () => {
         <div className="py-24 mt-20 bg-gradient-to-r from-[#F9F3F0] from-10% via-[#FCE7DC] via-30% to-[#F9F3F0] to-90% dark:bg-gradient-to-r dark:from-[#0F172A] dark:from-10% dark:via-[#0F172A] dark:via-30% dark:to-[#0F172A]">
           <Testimonial />
         </div>
-        {/* Why people choose us */}
         <div className="lg:px-16 px-5 lg:my-20 md:my-16 my-10">
-          {/* header */}
           <Choose />
         </div>
       </div>
-      <h2 className="text-3xl text-center">This is Home Page</h2>
     </div>
   );
 };

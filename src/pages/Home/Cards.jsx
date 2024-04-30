@@ -18,15 +18,12 @@ const Cards = () => {
           >
             <img
               data-tooltip-id="my-tooltip"
+              data-tooltip-content={category.item_name}
               src={category.image}
               alt=""
               className="w-full h-48 border mx-auto relative"
             />
-            <Tooltip id="my-tooltip">
-              <h2 className="text 2xl absolute text-[#FC8902] top-10">
-                {category.item_name}
-              </h2>
-            </Tooltip>
+            <Tooltip id="my-tooltip" />
             <h3 className="text-xl mt-4 text-[#FC8902] font-bold">
               {category.item_name}
             </h3>

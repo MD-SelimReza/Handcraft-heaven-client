@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import "swiper/css/navigation";
 
 const Testimonial = () => {
   return (
@@ -17,12 +16,13 @@ const Testimonial = () => {
             <Swiper
               watchSlidesProgress={true}
               slidesPerView={2}
-              modules={Autoplay}
               loop={true}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
               }}
+              modules={[Autoplay]}
+              className="mySwiper"
             >
               <SwiperSlide>
                 <div className="p-4 ">

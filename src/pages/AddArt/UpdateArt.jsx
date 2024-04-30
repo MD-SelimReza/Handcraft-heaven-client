@@ -16,8 +16,6 @@ const UpdateArt = () => {
     image,
   } = getArt;
 
-  console.log(getArt);
-
   const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -55,7 +53,6 @@ const UpdateArt = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
