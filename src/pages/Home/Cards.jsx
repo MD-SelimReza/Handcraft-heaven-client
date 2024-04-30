@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 
 const Cards = () => {
   const loadedCategories = useLoaderData();
@@ -16,10 +17,16 @@ const Cards = () => {
             className="border flex flex-col shadow-lg rounded-lg p-5"
           >
             <img
+              data-tooltip-id="my-tooltip"
               src={category.image}
               alt=""
-              className="w-full h-48 border mx-auto"
+              className="w-full h-48 border mx-auto relative"
             />
+            <Tooltip id="my-tooltip">
+              <h2 className="text 2xl absolute text-[#FC8902] top-10">
+                {category.item_name}
+              </h2>
+            </Tooltip>
             <h3 className="text-xl mt-4 text-[#FC8902] font-bold">
               {category.item_name}
             </h3>

@@ -32,7 +32,7 @@ const AddArt = () => {
 
     form.reset();
 
-    fetch("http://localhost:5000/allArts", {
+    fetch("https://art-and-craft-store-server-peach.vercel.app/allArts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

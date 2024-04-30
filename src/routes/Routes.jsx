@@ -20,12 +20,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch(`http://localhost:5000/allArts`),
+        loader: () =>
+          fetch(`https://art-and-craft-store-server-peach.vercel.app/allArts`),
       },
       {
         path: "/show-art",
         element: <ArtGallery />,
-        loader: () => fetch(`http://localhost:5000/allArts`),
+        loader: () =>
+          fetch(`https://art-and-craft-store-server-peach.vercel.app/allArts`),
       },
       {
         path: "/craftDetails/:id",
@@ -34,7 +36,8 @@ const router = createBrowserRouter([
             <CraftDetails />
           </ProtectedRoutes>
         ),
-        loader: () => fetch(`http://localhost:5000/allArts`),
+        loader: () =>
+          fetch(`https://art-and-craft-store-server-peach.vercel.app/allArts`),
       },
       {
         path: "/add-art",
@@ -52,7 +55,9 @@ const router = createBrowserRouter([
           </ProtectedRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allArts/${params.id}`),
+          fetch(
+            `https://art-and-craft-store-server-peach.vercel.app/allArts/${params.id}`
+          ),
       },
       {
         path: "/art-list",

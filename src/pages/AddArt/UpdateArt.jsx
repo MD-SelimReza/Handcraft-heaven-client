@@ -43,13 +43,16 @@ const UpdateArt = () => {
       image,
     };
 
-    fetch(`http://localhost:5000/allArts/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedArt),
-    })
+    fetch(
+      `https://art-and-craft-store-server-peach.vercel.app/allArts/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedArt),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

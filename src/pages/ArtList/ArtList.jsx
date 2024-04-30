@@ -8,7 +8,9 @@ const ArtList = () => {
   const { user } = useContext(AuthContext) || {};
   const [crafts, setCrafts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/allCrafts/${user?.email}`)
+    fetch(
+      `https://art-and-craft-store-server-peach.vercel.app/allCrafts/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCrafts(data);
@@ -29,9 +31,12 @@ const ArtList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allCrafts/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://art-and-craft-store-server-peach.vercel.app/allCrafts/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -53,9 +58,29 @@ const ArtList = () => {
 
   return (
     <div className="lg:px-10 px-5 my-10">
-      <h2 className="text-center mb-10 text-3xl text-[#FC8902]">
-        My Art and Craft List
-      </h2>
+      <div className="flex justify-between mb-10">
+        <h2 className="text-3xl text-[#FC8902]">My Art and Craft List</h2>
+        <div className="dropdown dropdown-hover">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-[#FC8902] text-white text-lg font-bold"
+          >
+            Filter by customizable
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>Yes</a>
+            </li>
+            <li>
+              <a>No</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-5">
         {crafts.map((craft) => (
           <div
