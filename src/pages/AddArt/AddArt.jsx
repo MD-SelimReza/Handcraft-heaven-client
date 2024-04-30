@@ -13,6 +13,8 @@ const AddArt = () => {
     const processing_time = form.processing_time.value;
     const stockStatus = form.stock_status.value;
     const image = form.image_url.value;
+    const user_email = form.user_email.value;
+    const user_name = form.user_name.value;
 
     const arts = {
       item_name,
@@ -24,6 +26,8 @@ const AddArt = () => {
       processing_time,
       stockStatus,
       image,
+      user_email,
+      user_name,
     };
 
     form.reset();
@@ -189,6 +193,36 @@ const AddArt = () => {
                   <option value="In stock">In Stock</option>
                   <option value="Made to Order">Made to Order</option>
                 </select>
+              </div>
+            </div>
+            <div className="lg:flex gap-5">
+              <div className="form-control lg:w-1/2">
+                <label className="label">
+                  <span className="label-text font-bold text-black">
+                    User Name:
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  name="user_name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control lg:w-1/2">
+                <label className="label">
+                  <span className="label-text font-bold text-black">
+                    User Email:
+                  </span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter subcategory name"
+                  name="user_email"
+                  className="input input-bordered"
+                  required
+                />
               </div>
             </div>
             <div className="form-control">

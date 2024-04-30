@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, profileUpdate } = useContext(AuthContext);
-  const from = useLocation();
+  const { createUser } = useContext(AuthContext);
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const {
@@ -17,7 +17,7 @@ const Register = () => {
   } = useForm();
 
   const handleRegister = (data) => {
-    const { email, password, image, fullName } = data;
+    const { email, password } = data;
 
     if (!/^(?=.*[a-z])(?=.*[A-Z])[A-Za-z]{6,}$/.test(password)) {
       toast.error(
@@ -27,11 +27,9 @@ const Register = () => {
     }
 
     createUser(email, password).then(() => {
-      profileUpdate(fullName, image).then(() => {
-        toast.success("user successfully register");
-        navigate(from?.state ? from.state : "/");
-        location.reload();
-      });
+      toast.success("user successfully register");
+      navigate(location?.state ? location.state : "/");
+      location.reload();
     });
   };
 
